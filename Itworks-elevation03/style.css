@@ -100,7 +100,7 @@
   border-bottom-left-radius: none;
   border-bottom-right-radius: none;
 }
-.col-white{
+.col-white {
   height: 160px;
   width: 140px;
   position: absolute;
@@ -116,9 +116,30 @@
   right: 0;
   top: 0;
 }
-.col-orangered{
+.col-orangered {
   height: 120px;
   background: orangered;
   border-bottom-left-radius: 5px;
   border-bottom-right-radius: 5px;
+}
+
+.container-4 {
+  /* box-sizing: border-box; */
+  background: black;
+  width: 400px;
+  height: 200px;
+  padding: 5px;
+}
+.strip{
+  background: darkred;
+  height: 5px;
+  width: 100%;
+  margin-bottom: 5px;
+}
+
+.choc{
+  width: 97px;
+  height: 93px;
+  display: inline-block;
+  background: #66320E;
 }
