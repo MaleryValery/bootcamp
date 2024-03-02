@@ -122,24 +122,22 @@
   border-bottom-left-radius: 5px;
   border-bottom-right-radius: 5px;
 }
-
 .container-4 {
-  /* box-sizing: border-box; */
   background: black;
   width: 400px;
   height: 200px;
   padding: 5px;
 }
-.strip{
+.strip {
   background: darkred;
   height: 5px;
   width: 100%;
   margin-bottom: 5px;
 }
 
-.choc{
+.choc {
   width: 97px;
   height: 93px;
   display: inline-block;
-  background: #66320E;
+  background: #66320e;
 }
