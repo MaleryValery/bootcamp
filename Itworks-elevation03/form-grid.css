@@ -1,4 +1,46 @@
 .wrapper {
+  height: 100vh;
   display: grid;
-  grid-template-areas: "h h" "m m" "f f";
+  grid-template-rows: 1fr 6fr 1fr;
+}
+
+header {
+  display: grid;
+  grid-template-columns: 1fr 4fr;
+  align-items: center;
+  background-color: bisque;
+  
+}
+
+nav ul {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  justify-items: center;
+}
+
+main {
+  display: grid;
+  grid-template-columns: 1fr 3fr 1fr;
+}
+footer {
+  background-color: aquamarine;
+  padding: 40px 0;
+}
+
+aside {
+  display: grid;
+  padding: 10px;
+}
+article{
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+}
+
+article div {
+  padding: 10px;
+}
+
+section{
+  display: grid;
+  align-content: center;
 }
