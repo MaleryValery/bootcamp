@@ -301,3 +301,85 @@ const plant = function () {
 };
 
 plant();
+
+// -----------  exercise 4
+
+const people_info = [
+  {
+    name: "guido",
+    profession: "bungalow builder",
+    age: 17,
+    country: "canaland",
+    city: "sydurn",
+    catchphrase: "what a piece of wood!"
+  },
+  {
+    name: "petra",
+    profession: "jet plane mechanic",
+    age: 31,
+    country: "greenmark",
+    city: "bostork",
+    catchphrase: "that's my engine, bub"
+  },
+  {
+    name: "damian",
+    profession: "nursery assistant",
+    age: 72,
+    country: "zimbia",
+    city: "bekyo",
+    catchphrase: "with great responsibility comes great power"
+  }
+];
+
+const capitalize = (string) => {
+  if (string.split(" ").length > 1)
+    return string
+      .split(" ")
+      .map((el) => el[0].toUpperCase() + el.slice(1))
+      .join(" ");
+
+  return string[0].toUpperCase() + string.slice(1);
+};
+
+const getAge = (age) => {
+  if (age < 21) return "Underage";
+  if (age > 55) return "55+";
+  return age;
+};
+
+const getSummury = (person) => {
+  const name = capitalize(person.name);
+  const catchphrase = person.catchphrase[0].toUpperCase() + person.catchphrase.slice(1);
+
+  return `${name}
+   is a ${capitalize(person.profession)}
+    from ${capitalize(person.city)}, ${capitalize(person.country)}. ${name} loves to say "${catchphrase}"`;
+};
+
+people_info.forEach((person) => getSummury(person));
+
+const story =
+  "In the beginning there was light. Then there were wolves. Finally there was a big fire. Ultimately, Shelob the wolf-master put out the fire with her feet. But until then, the fire caused one heck of a lot of damage.";
+const specialChars = [",", ".", "'", '"', "?", "!", ";"];
+const wordCounts = {};
+
+const removeSpecialChars = (string, arr) => {
+  let newStory = string;
+
+  for (let char of arr) {
+    newStory = newStory.replaceAll(char, "");
+  }
+  return newStory;
+};
+
+const countWords = (string, chars) => {
+  const updatedStory = removeSpecialChars(string, chars)
+    .split(" ")
+    .map((el) => el.toLowerCase());
+
+  const wordCounts = updatedStory.reduce((acc, word) => {
+    acc[word] = acc[word] + 1 || 1;
+    return acc;
+  }, {});
+  return wordCounts;
+};
