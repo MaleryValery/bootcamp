@@ -1,3 +1,6 @@
 # bootcamp
-## SASS
-## JS basic
+- week3
+    - SASS basic
+    - bootstrap
+    - JS basic (variables, if/elsse, loops, functions, arrays, objects)
+
