@@ -12,32 +12,13 @@
 // 4. Change the <title> element text to “Master Of The Dom”.
 // 5. Change the text of the <p> element ot something else of
 // your
-// Note:
-// On the next page, you have the HTML code
-// <!DOCTYPE html>
-// <html lang="en">
-// <head>
-// <meta charset="UTF-8" />
-// <meta name="viewport"
-// content="width=device-width, initial-scale=1.0" />
-// <title>Document</title>
-// <script src="./script.js" defer></script>
-// </head>
-// <body>
-// <ul>
-// <li>title 1</li>
-// <li class="start-here">title 2</li>
-// <li>
-// <ul>
-// <li>sub title 1</li>
-// <li>sub title 2</li>
-// <li>sub title 3</li>
-// </ul>
-// </li>
-// <li>title 3</li>
-// </ul>
-// <div>
-// <p>Hello World!</p>
-// </div>
-// </body>
-// </html>
+const startListItem = document.querySelector(".start-here");
+const innerUnorderedList = document.querySelector(".start-here + li > ul");
+const unorderedListLastEl = document.querySelector("body > ul>li:last-child");
+const paragrafText = document.querySelector("body > div > p");
+
+startListItem.innerHTML = "main title";
+innerUnorderedList.insertAdjacentHTML("beforeend", "<li>sub title 4</li>");
+unorderedListLastEl.remove();
+document.title = "Master Of The Dom";
+paragrafText.innerHTML = "some new text";

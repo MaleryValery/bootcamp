@@ -20,42 +20,43 @@ function funcA() {
 funcA();
 
 // Block 2
-// var fullName = "John Doe";
-// var obj = {
-//   fullName: "Colin Ihrig",
-//   prop: {
-//     fullName: "Aurelio De Rosa",
-//     getFullName: function () {
-//       return this.fullName;
-//     }
-//   }
-// };
-// console.log(obj.prop.getFullName()); // "Aurelio De Rosa", getFullName will take fullName from prop object
-// var test = obj.prop.getFullName; // obj.prop.getFullName.bind(obj.prop);
-// console.log(test()); // undefined, this function will lost context because on line 29 there is referens to this, to get correct return needs to bind object or use call test.call(obj.prop)
+var fullName = "John Doe";
+var obj = {
+  fullName: "Colin Ihrig",
+  prop: {
+    fullName: "Aurelio De Rosa",
+    getFullName: function () {
+      return this.fullName;
+    }
+  }
+};
+console.log(obj.prop.getFullName()); // "Aurelio De Rosa", getFullName will take fullName from prop object
+var test = obj.prop.getFullName; // obj.prop.getFullName.bind(obj.prop);
+console.log(test()); // undefined, this function will lost context because on line 29 there is referens to this, to get correct return needs to bind object or use call test.call(obj.prop)
 
 // Block 3
-// this is a tough one! thank you for that!
-// function funcB() {
-//   let a = (b = 0);
-//   a++;
-//   return a;
-// }
-// funcB();
-// console.log(typeof a); // undefined let a variable is block scoped, there is no access to it out of the block
-// console.log(typeof b); // number. b was defined without let/var, so it will move to global scope
+// this is a tough one i didnt get it and have to search some theory about that!
+// thank you for that!
+function funcB() {
+  let a = (b = 0);
+  a++;
+  return a;
+}
+funcB();
+console.log(typeof a); // undefined let a variable is block scoped, there is no access to it out of the block
+console.log(typeof b); // number. b was defined without let/var, so it will move to global scope
 
 // Block 4
 
-// function funcC() {
-//   console.log("1");
-// }
-// funcC(); // 2 because if there are 2 functions declaration with the same name the second one will hoiste and override the first one
+function funcC() {
+  console.log("1");
+}
+funcC(); // 2 because if there are 2 functions declaration with the same name the second one will hoiste and override the first one
 
-// function funcC() {
-//   console.log("2");
-// }
-// funcC(); // 2
+function funcC() {
+  console.log("2");
+}
+funcC(); // 2
 
 // Block 5
 function funcD1() {
