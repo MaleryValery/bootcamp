@@ -4,7 +4,8 @@
   box-sizing: border-box;
 }
 
-.form__wtapper {
+.form__wrapper {
+  padding-top: 100px;
   display: flex;
   flex-direction: column;
   justify-content: center;
