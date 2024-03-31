@@ -2,7 +2,6 @@ const submitBtn = document.querySelector(".form__btn");
 const formInput = document.querySelector(".form__input");
 const form = document.querySelector(".form__wrapper");
 const colorPicker = document.querySelector(".form__color-picker");
-const colorPicker = document.querySelector(".form__color-picker");
 const body = document.querySelector("body");
 
 function isValidHexColor(color) {
@@ -22,5 +21,4 @@ const handleChangeColor = (event) => {
 };
 
 form.addEventListener("submit", handlerSubmit);
-colorPicker.addEventListener("input", handleChangeColor);
 colorPicker.addEventListener("input", handleChangeColor);
