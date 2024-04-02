@@ -1,11 +1,11 @@
 import { contacts } from "../data/contacts.js";
 
-console.log(contacts);
+/*************** array methods  *******************/
 
 const sortContactatsByName = (contactsArr) => {
   return [...contactsArr].sort((contact1, contact2) => {
-    if (contact1.name.last > contact2.name.last) return 1;
-    if (contact1.name.last < contact2.name.last) return -1;
+    if (contact1.name.last.toLowerCase() > contact2.name.last.toLowerCase()) return 1;
+    if (contact1.name.last.toLowerCase() < contact2.name.last.toLowerCase()) return -1;
     return 0;
   });
 };
@@ -24,7 +24,9 @@ const getFirstFiveContacts = (contactsArr) => {
 };
 
 const getUniqueContactsName = (contactsArr) => {
-  return contactsArr.map((contact) => contact.name.first).filter((name, i, arr) => i === arr.indexOf(name));
+  return contactsArr
+    .map((contact) => contact.name.first)
+    .filter((name, i, arr) => i === arr.indexOf(name));
 };
 
 const createFullNamesArray = (contactsArr) => {
@@ -42,7 +44,10 @@ const getContactById = (contactsArr, idObj) => {
 };
 
 const countContactsFromOneCountry = (contactsArr, countryStr) => {
-  return contactsArr.reduce((acc, contact) => (acc = contact.location.country === countryStr ? acc + 1 : acc), 0);
+  return contactsArr.reduce(
+    (acc, contact) => (acc = contact.location.country === countryStr ? acc + 1 : acc),
+    0
+  );
 };
 
 const getContactsParticularAge = (contactsArr, ageMin, ageMax) => {
@@ -61,3 +66,61 @@ printContectEmail(contacts.results);
 getContactById(contacts.results, { name: "BSN", value: "54866958" });
 countContactsFromOneCountry(contacts.results, "New Zealand");
 getContactsParticularAge(contacts.results, 25, 35);
+
+/*************** search contacts  *******************/
+
+const createHTMLEl = (parent, tab, className, content) => {
+  const el = document.createElement(tab);
+  el.className = className;
+  el.innerHTML = content || "";
+  parent.append(el);
+  return el;
+};
+
+const mainEl = document.querySelector(".main");
+const formEl = document.querySelector(".form");
+const inputEl = document.querySelector(".form__input");
+
+const createContactCard = (contactObj) => {
+  return `<div class="card">
+  <div class="card__image-wrapper"><img src="${contactObj.picture.thumbnail}" alt=""></div>
+    <div class="card__content-wrapper">
+      <h4 class="content__bio">${contactObj.name.first} ${contactObj.name.last}</h4>
+      <p class="content__age">age: ${contactObj.dob.age}</p>
+      <p class="content__email">${contactObj.email}</p>
+      <p class="content__location">${contactObj.location.city} ${contactObj.location.country}</p>
+      <p class="content__phone">${contactObj.phone}</p>
+    </div>
+  </div>
+</div>`;
+};
+
+const searchContacts = (contactsArr, valueStr) => {
+  return contactsArr.filter((contact) => contact.name.first.toLowerCase().includes(valueStr));
+};
+
+const showSearchResult = (parent, value) => {
+  const resultContainerEl = createHTMLEl(parent, "div", "search-result__wrapper");
+  const searchResultArr = searchContacts(contacts.results, value);
+
+  searchResultArr.forEach((contact) =>
+    resultContainerEl.insertAdjacentHTML("beforeend", createContactCard(contact))
+  );
+
+  if (!searchResultArr.length) resultContainerEl.textContent = "Contacts are nothing found 👀";
+};
+
+const removeSearchResult = () => {
+  const prevResult = document.querySelector(".search-result__wrapper");
+  if (prevResult) prevResult.remove();
+};
+
+formEl.addEventListener("submit", (e) => {
+  e.preventDefault();
+  removeSearchResult();
+  showSearchResult(mainEl, inputEl.value);
+});
+
+inputEl.addEventListener("input", (e) => {
+  if (e.target.value === "") removeSearchResult();
+});
