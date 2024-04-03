@@ -62,7 +62,7 @@ reverseContacts(contacts.results);
 getFirstFiveContacts(contacts.results);
 getUniqueContactsName(contacts.results);
 createFullNamesArray(contacts.results);
-printContectEmail(contacts.results);
+// printContectEmail(contacts.results);
 getContactById(contacts.results, { name: "BSN", value: "54866958" });
 countContactsFromOneCountry(contacts.results, "New Zealand");
 getContactsParticularAge(contacts.results, 25, 35);
@@ -96,7 +96,14 @@ const createContactCard = (contactObj) => {
 };
 
 const searchContacts = (contactsArr, valueStr) => {
-  return contactsArr.filter((contact) => contact.name.first.toLowerCase().includes(valueStr));
+  if (isNaN(valueStr))
+    return contactsArr.filter(
+      (contact) =>
+        contact.name.first.toLowerCase().includes(valueStr) ||
+        contact.name.last.toLowerCase().includes(valueStr)
+    );
+
+  return contactsArr.filter((contact) => contact.phone.includes(valueStr));
 };
 
 const showSearchResult = (parent, value) => {
@@ -107,7 +114,7 @@ const showSearchResult = (parent, value) => {
     resultContainerEl.insertAdjacentHTML("beforeend", createContactCard(contact))
   );
 
-  if (!searchResultArr.length) resultContainerEl.textContent = "Contacts are nothing found 👀";
+  if (!searchResultArr.length) resultContainerEl.textContent = "Contacts are not found 👀";
 };
 
 const removeSearchResult = () => {
