@@ -70,3 +70,22 @@ delayGreeting(2000)
   .catch((error) => {
     console.error("Error:", error);
   });
+
+//   Exercise 5: Error Handling
+// Create a promise chain that attempts to parse JSON data. Use a try/catch block within a .then() method to handle JSON parsing errors. If successful, log the parsed object; if an error occurs, log "Invalid JSON".
+
+const jsonData = '{"name": "myname", "age": 18}';
+
+const parseJsonData = (json) => {
+  return new Promise((resolve) => resolve(json));
+};
+
+parseJsonData(jsonData).then((data) => {
+  try {
+    const jsonData = JSON.parse(data);
+    console.log("jsonData: ", jsonData);
+    return jsonData;
+  } catch (err) {
+    console.log("cannot parse");
+  }
+});
