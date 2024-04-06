@@ -44,10 +44,29 @@ transformString("fff");
 // Write a function compareToNum that takes a number as an argument and returns a Promise
 // that tests if the value is less than or greater than the value 10 (reject otherwise)
 
-const compareToNum = (num) => {
+const compareToNum = ({ num, isAboveNum }) => {
   return new Promise((resolve, reject) => {
-    if (num < 10 || num > 10) resolve();
+    if (num < isAboveNum) resolve();
     else reject();
   });
 };
-compareToNum(11);
+compareToNum({ num: 10, isAboveNum: 5 });
+
+// Exercise 4: Delayed Greetings
+// Simulate a delayed greeting with promises. First, wait 2 seconds, then log "Hello", wait another second, and log "World!". Each step should be done in a separate .then().
+
+const delayGreeting = (secDelay) => {
+  return new Promise((resolve) => setTimeout(resolve, secDelay));
+};
+
+delayGreeting(2000)
+  .then(() => {
+    console.log("Hello");
+    return delayGreeting(1000);
+  })
+  .then(() => {
+    console.log("World!");
+  })
+  .catch((error) => {
+    console.error("Error:", error);
+  });
