@@ -18,7 +18,12 @@ const getBookById = (id) => {
 };
 
 const addBook = (book) => {
-  if (!Object.keys(book).length) {
+  if (!authors.some((author) => author.id === book.id)) {
+    console.log('author not found');
+    return null;
+  }
+  if (book.price < 0 && !book.title.length) {
+    console.log('price and title of book are required');
     return null;
   }
   books.push(Object.assign(book, { id: uuidv4() }));
@@ -38,7 +43,7 @@ const updateBookById = (id, newBook) => {
 
 const deleteBook = (id) => {
   const bookIndex = booksWithAuthor.findIndex((book) => book.id === id);
-  if (bookIndex) {
+  if (bookIndex === -1) {
     console.log('book not found');
     return;
   }
