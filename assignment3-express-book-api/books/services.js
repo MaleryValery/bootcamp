@@ -1,36 +1,45 @@
-import books from '../data/books.json' assert { type: 'json' };
-import authors from '../data/authors.json' assert { type: 'json' };
 import { v4 as uuidv4 } from 'uuid';
+import { bookFactory } from './utils.js';
+import authors from '../data/authors.json' assert { type: 'json' };
+import books from '../data/books.json' assert { type: 'json' };
 
-const booksWithAuthor = books.map((book) => {
-  const authorObj = { author: authors.find((author) => author.id === book.authorId) };
-  return Object.assign(book, authorObj);
-});
+const getbooksWithAuthor = (booksArr, authorsArr) => {
+  const authorMap = new Map(authorsArr.map((autor) => [autor.id, autor]));
 
-console.log(booksWithAuthor);
+  return booksArr.map((book) => {
+    if (!authorMap.has(book.authorId)) return book;
+    return Object.assign(book, { author: authorMap.get(book.authorId) });
+  });
+};
 
-const getAllbooks = () => booksWithAuthor;
+const getAllbooks = () => getbooksWithAuthor(books, authors);
+
 const getBookById = (id) => {
+  const booksWithAuthor = getbooksWithAuthor(books, authors);
+
   const bookById = booksWithAuthor.find((book) => book.id === id);
-  if (!bookById) return null;
+  if (!bookById.id) return null;
 
   return bookById;
 };
 
 const addBook = (book) => {
+  const newBook = bookFactory(book);
   if (!authors.some((author) => author.id === book.id)) {
     console.log('author not found');
     return null;
   }
-  if (book.price < 0 && !book.title.length) {
-    console.log('price and title of book are required');
+
+  if (!newBook) {
+    console.log('book should have title and price');
     return null;
   }
-  books.push(Object.assign(book, { id: uuidv4() }));
+
+  books.push(Object.assign(newBook, { id: uuidv4() }));
 };
 
 const updateBookById = (id, newBook) => {
-  const bookToUpdate = booksWithAuthor.find((book) => book.id === id);
+  const bookToUpdate = books.find((book) => book.id === id);
 
   if (!Object.keys(bookToUpdate).length) {
     return null;
@@ -42,7 +51,7 @@ const updateBookById = (id, newBook) => {
 };
 
 const deleteBook = (id) => {
-  const bookIndex = booksWithAuthor.findIndex((book) => book.id === id);
+  const bookIndex = books.findIndex((book) => book.id === id);
   if (bookIndex === -1) {
     console.log('book not found');
     return;
@@ -51,4 +60,4 @@ const deleteBook = (id) => {
   return booksWithAuthor.splice(bookIndex, 1)[0];
 };
 
-export default { getAllbooks, getBookById, addBook, updateBookById, updatePartBookById, deleteBook };
+export default { getAllbooks, getBookById, addBook, updateBookById, deleteBook };
