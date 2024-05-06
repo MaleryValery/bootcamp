@@ -24,9 +24,9 @@ function App() {
   };
 
   const updateItem = (id) => {
-    const index = todoList.findIndex((el) => el.id === id);
-    todoList[index].done = !todoList[index].done;
-    setTodoList([...todoList]);
+    setTodoList((prev) =>
+      prev.map((el) => (el.id === id ? { ...el, done: !el.done } : el))
+    );
   };
 
   return (
@@ -47,7 +47,7 @@ function App() {
           Clear todo
         </button>
       ) : (
-        ''
+        <p>what are you going to do?😉</p>
       )}
     </>
   );
