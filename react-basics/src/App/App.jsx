@@ -23,11 +23,21 @@ function App() {
     setTodoList([]);
   };
 
+  const updateItem = (id) => {
+    const index = todoList.findIndex((el) => el.id === id);
+    todoList[index].done = !todoList[index].done;
+    setTodoList([...todoList]);
+  };
+
   return (
     <>
       <h1>Create your ToDo</h1>
       <Form onAddTodo={handleAddTodo} />
-      <TodoList todoList={todoList} onDeleteItem={handleDeleteItem} />
+      <TodoList
+        todoList={todoList}
+        onDeleteItem={handleDeleteItem}
+        onUpdateItem={updateItem}
+      />
       {todoList.length ? (
         <button
           disabled={!todoList.length}
