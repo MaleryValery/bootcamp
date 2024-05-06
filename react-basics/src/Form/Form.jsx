@@ -1,4 +1,6 @@
 import { useForm } from 'react-hook-form';
+import { v4 as uuidv4 } from 'uuid';
+
 import './Form.css';
 function Form({ onAddTodo }) {
   const {
@@ -9,14 +11,14 @@ function Form({ onAddTodo }) {
   } = useForm({ mode: 'onChange' });
 
   const validateDate = (date) => {
-    return new Date(date) >= new Date();
+    return new Date(date) >= new Date().getDate();
   };
 
   const handlerSubmit = (data) => {
     onAddTodo({
       ...data,
       done: false,
-      id: Date.now(),
+      id: uuidv4(),
     });
     reset();
   };

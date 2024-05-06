@@ -16,7 +16,7 @@ function TodoItem({ todo, onDeleteItem, onUpdateItem }) {
           onChange={() => onUpdateItem(todo.id)}
         />
         <p className={`${todo.done ? 'done' : ''}`}>{todo.title}</p>
-        <p className={`${todo.done ? 'done' : ''}`}>{todo.date}</p>
+        <p className={`${todo.done ? 'done' : ''} date`}>{todo.date}</p>
         <button
           onClick={() => onDeleteItem(todo.id)}
           className="item__delete-btn"
