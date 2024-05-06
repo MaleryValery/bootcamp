@@ -1,0 +1,37 @@
+.form {
+  padding-top: 20px;
+  justify-content: center;
+  display: flex;
+  gap: 10px;
+  width: 100%;
+}
+
+.form button {
+  padding: 5px;
+  background-color: #eee;
+}
+.form button:disabled {
+  background-color: #f9f9f9;
+}
+.form__content {
+  display: flex;
+  flex-direction: column;
+  gap: 16px;
+  min-width: 90%;
+}
+.form__content input {
+  min-height: 26px;
+  padding: 3px;
+  border-radius: 5px;
+  border: 1px solid #333;
+  min-width: 100%;
+}
+.content__box {
+  position: relative;
+}
+.error-text {
+  position: absolute;
+  color: orangered;
+  font-size: 9px;
+  padding: 0;
+}
