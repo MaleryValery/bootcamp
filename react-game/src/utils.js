@@ -1,3 +1,5 @@
+import { WINNERS } from './consts';
+
 export function buildDeck() {
   const fullSuites = ['♠', '♥', '♦', '♣'];
 
@@ -32,6 +34,6 @@ export function getPointsSum(cardsOnHand) {
 export function checkWinner(playerObj, houseObj) {
   const player = getPointsSum(playerObj);
   const house = getPointsSum(houseObj);
-  if (house > 21) return 'player';
-  if (house < 22) return player >= house ? 'player' : 'house';
+  if (house > 21) return WINNERS.player ;
+  if (house < 22) return player >= house ? WINNERS.player : WINNERS.house;
 }

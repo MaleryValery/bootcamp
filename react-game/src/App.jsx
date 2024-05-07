@@ -1,69 +1,105 @@
-import { useEffect, useState } from 'react';
+import { useEffect, useReducer } from 'react';
 import './App.css';
 import { buildDeck, checkWinner, getPointsSum, shuffleDeck } from './utils';
 import Cards from './Cards';
+import { ACTIONS, WINNERS } from './consts';
+
+const initState = {
+  deck: shuffleDeck(buildDeck()),
+  playerHand: [],
+  houseHand: [],
+  winner: '',
+  isGame: true,
+  isStop: false,
+};
+
+const reduce = (state, action) => {
+  switch (action.type) {
+    case ACTIONS.startGame:
+      return { ...initState };
+    case ACTIONS.stopGame:
+      return { ...state, isGame: false, winner: action.payload };
+    case ACTIONS.playerHand: {
+      const newDeck = [...state.deck];
+      const newHand = [...state.playerHand, newDeck.pop()];
+      return { ...state, playerHand: newHand, deck: newDeck };
+    }
+    case ACTIONS.houseHand: {
+      const newDeck = [...state.deck];
+      const newHand = newDeck.slice(-2);
+      return {
+        ...state,
+        houseHand: newHand,
+        deck: newDeck.slice(0, newDeck.length - 2),
+        isGame: false,
+        isStop: true,
+      };
+    }
+
+    default:
+      return state;
+  }
+};
 
 function App() {
-  const [deck, setDeck] = useState(shuffleDeck(buildDeck()));
-  const [playerHand, setPlayerHand] = useState([]);
-  const [houseHand, setHouseHand] = useState([]);
-  const [winner, setWinner] = useState('');
-  const [isGame, setIsGame] = useState(true);
+  const [state, dispatch] = useReducer(reduce, initState);
 
   useEffect(() => {
-    if (!playerHand.length) return;
-    if (getPointsSum(playerHand) === 21) {
-      setWinner('player');
-      setIsGame(false);
-    } else if (getPointsSum(playerHand) > 21) {
-      setWinner('house');
-      setIsGame(false);
+    if (!state.playerHand.length) return;
+    if (getPointsSum(state.playerHand) === 21) {
+      dispatch({ type: ACTIONS.stopGame, payload: WINNERS.player });
+    } else if (getPointsSum(state.playerHand) > 21) {
+      console.log('🚀 ~ useEffect ~  WINNERS.house:', WINNERS.house);
+      dispatch({ type: ACTIONS.stopGame, payload: WINNERS.house });
     }
-  }, [playerHand]);
+  }, [state.playerHand]);
 
   useEffect(() => {
-    if (isGame) return;
-    setWinner(checkWinner(playerHand, houseHand));
-  }, [isGame, playerHand, houseHand]);
+    if (!state.isStop) return;
+    const winner = checkWinner(state.playerHand, state.houseHand);
+    dispatch({ type: ACTIONS.stopGame, payload: winner });
+  }, [state.isStop, state.playerHand, state.houseHand]);
 
   const handlerDeal = () => {
-    if (!isGame) return;
-    const newDeck = [...deck];
-    setPlayerHand((prev) => [...prev, newDeck.pop()]);
-    setDeck(newDeck);
+    if (!state.isGame) return;
+    dispatch({ type: ACTIONS.playerHand });
   };
 
   const handlerStop = () => {
-    const newDeck = [...deck];
-    setHouseHand(newDeck.slice(-2));
-    setDeck(newDeck.slice(0, newDeck.length - 2));
-    setIsGame(false);
+    dispatch({ type: ACTIONS.houseHand });
   };
 
   const restartGame = () => {
-    setDeck(shuffleDeck(buildDeck()));
-    setIsGame(true);
-    setPlayerHand([]);
-    setHouseHand([]);
-    setWinner('');
+    dispatch({ type: ACTIONS.startGame });
   };
 
   return (
     <>
-      <h1>{winner.length > 0 ? `${winner} wins 💸` : 'Silly Blackjack'}</h1>
+      <h1>
+        {state.winner.length > 0
+          ? `${state.winner} wins 💸`
+          : 'Silly Blackjack'}
+      </h1>
       <div className="btns__wrapper">
-        <button disabled={!isGame} onClick={handlerDeal}>
+        <button disabled={!state.isGame} onClick={handlerDeal}>
           DEAL
         </button>
-        <button disabled={!playerHand.length || !isGame} onClick={handlerStop}>
+        <button
+          disabled={!state.playerHand.length || !state.isGame}
+          onClick={handlerStop}
+        >
           STOP
         </button>
       </div>
 
       <div className="hands__cards">
-        <Cards hand="player" cards={playerHand} gameStatus={isGame} />
+        <Cards
+          hand="player"
+          cards={state.playerHand}
+          gameStatus={state.isGame}
+        />
         <button onClick={restartGame}>🔄</button>
-        <Cards hand="house" cards={houseHand} gameStatus={isGame} />
+        <Cards hand="house" cards={state.houseHand} gameStatus={state.isGame} />
       </div>
     </>
   );
