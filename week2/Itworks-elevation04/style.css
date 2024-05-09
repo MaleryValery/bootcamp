@@ -1,0 +1,144 @@
+*{
+  box-sizing: border-box;
+  margin: 0;
+  padding: 0;
+}
+
+body {
+  font-family: Verdana, Geneva, Tahoma, sans-serif;
+  margin: 0 auto;
+  height: 100vh;
+}
+
+.header {
+  height: 300px;
+}
+
+.header-navigation {
+  display: flex;
+  align-items: center;
+  justify-content: space-evenly;
+  height: 50px;
+  padding: 5px 0;
+  color: #555;
+}
+
+.header-navigation .left-container {
+  width: 30%;
+}
+
+.header-navigation .left-container ul {
+  list-style-type: none;
+  display: flex;
+  justify-content: space-around;
+}
+
+.header-navigation .left-container ul li {
+  display: flex;
+  align-items: center;
+  gap: 5px;
+}
+
+.rigth-container .inner-rigth-container img {
+  width: 35px;
+  border-radius: 35px;
+}
+
+.header-navigation .rigth-container {
+  display: flex;
+  align-items: center;
+  width: 30%;
+}
+
+.rigth-container .inner-left-container input {
+  border-radius: 50px;
+  border: none;
+  background-color: #eee;
+  padding: 10px;
+}
+
+.rigth-container .inner-left-container {
+  position: relative;
+}
+
+.rigth-container .inner-left-container i {
+  position: absolute;
+  top: 50%;
+  right: 10%;
+  transform: translate(-50%, -50%);
+}
+
+.rigth-container .inner-rigth-container {
+  display: flex;
+  align-items: center;
+  justify-content: space-evenly;
+  width: 40%;
+}
+
+.rigth-container .inner-rigth-container button {
+  background-color: rgb(94, 193, 254);
+  padding: 10px 20px;
+  border: none;
+  border-radius: 20px;
+  color: white;
+}
+
+.header-banner {
+  height: 250px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  color: white;
+  background-color: rgb(94, 193, 254);
+}
+
+.header-info {
+  display: flex;
+  /* justify-content: space-around; */
+  position: relative;
+  bottom: 25%;
+}
+
+.header-info .left-container {
+  display: flex;
+  align-items: center;
+  margin-left: 10%;
+}
+
+.header-info .left-container .inner-left-container img {
+  width: 200px;
+  border-radius: 200px;
+  border: 5px solid white;
+}
+
+
+.header-info .left-container .inner-rigth-container {
+  display: flex;
+  gap: 15px;
+  position: relative;
+    right: 65px;
+}
+
+.header-info .left-container .inner-rigth-container .user-info {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+
+
+.header-info .rigth-container {
+  display: flex;
+  width: 10%;
+  justify-content: space-evenly;
+  align-items: center;
+  margin-left: auto;
+}
+
+.header-info .rigth-container button {
+  background-color: rgb(206, 215, 220);
+  padding: 10px 20px;
+  border: none;
+  border-radius: 20px;
+  border: 1px solid rgb(94, 193, 254);
+  color: rgb(94, 193, 254);
+}
