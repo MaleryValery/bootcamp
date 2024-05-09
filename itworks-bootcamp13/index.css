@@ -1,0 +1,35 @@
+* {
+  padding: 0;
+  margin: 0 auto;
+  box-sizing: border-box;
+}
+
+body {
+  height: 100vh;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.form__btn,
+.form__input,
+.form__wrapper {
+  padding: 5px 10px;
+  border-radius: 10px;
+  border: 1px solid #444;
+}
+
+.form__btn,
+.form__wrapper {
+  background: #fff;
+}
+
+.form__wrapper {
+  max-width: 300px;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  gap: 20px;
+  padding: 30px;
+}
