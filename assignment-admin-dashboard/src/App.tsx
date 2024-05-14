@@ -2,6 +2,7 @@ import { RouterProvider, createBrowserRouter } from 'react-router-dom';
 import LoginPage from './pages/LoginPage';
 import AppLayout from './pages/AppLayout';
 import AuthProvider from './context/AuthProvider';
+import ProtectedRoute from './UI/ProtectedRoute';
 
 const router = createBrowserRouter([
   {
@@ -14,7 +15,7 @@ const router = createBrowserRouter([
   },
   {
     path: '/admin',
-    element: <AppLayout />,
+    element: <ProtectedRoute path="/login" element={<AppLayout />} />,
   },
 ]);
 
