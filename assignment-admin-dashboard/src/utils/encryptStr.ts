@@ -1,3 +1,4 @@
+/* eslint-disable no-bitwise */
 const cipher = (salt: string): ((text: string) => string) => {
   const textToChars = (text: string): number[] =>
     text.split('').map((c) => c.charCodeAt(0));

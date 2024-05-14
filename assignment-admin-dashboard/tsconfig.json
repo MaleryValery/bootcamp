@@ -31,6 +31,7 @@
     ".eslintrc.cjs",
     "assignment-admin-dashboard/src",
     "tsconfig.eslint.json",
+    "tailwind.config.js",
     "**/*.ts",
     "**/*.tsx",
     "**/**/*.ts",
