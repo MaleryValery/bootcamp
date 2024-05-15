@@ -97,7 +97,7 @@ function CreateUserPage() {
       dob: new Date().toISOString(),
     };
     const response = await createUser(newUser);
-    if (response.id) addUser({ ...newUser, id: response.id });
+    if ('id' in response) addUser({ ...newUser, id: response.id });
 
     navigate('/admin/users');
   };

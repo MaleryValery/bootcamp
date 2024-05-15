@@ -11,7 +11,6 @@ function UserProvider({ children }: { children: ReactNode }) {
   };
 
   const deleteUser = (id: string) => {
-    console.log('🚀 ~ deleteUser ~ id:', id);
     setUsers((prev) => prev.filter((user) => user.id !== id));
   };
 
