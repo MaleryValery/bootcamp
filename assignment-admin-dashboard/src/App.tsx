@@ -9,6 +9,8 @@ import Homepage from './pages/Homepage';
 import EditUsersPage from './pages/EditUsersPage';
 import CreateUserPage from './pages/CreateUserPage';
 import UserProvider from './context/UserProvider';
+import { I18nextProvider } from 'react-i18next';
+import index from '../src/i18n';
 
 const router = createBrowserRouter([
   {
@@ -54,11 +56,13 @@ const router = createBrowserRouter([
 
 function App() {
   return (
-    <AuthProvider>
-      <UserProvider>
-        <RouterProvider router={router} />
-      </UserProvider>
-    </AuthProvider>
+    <I18nextProvider i18n={index}>
+      <AuthProvider>
+        <UserProvider>
+          <RouterProvider router={router} />
+        </UserProvider>
+      </AuthProvider>
+    </I18nextProvider>
   );
 }
 
