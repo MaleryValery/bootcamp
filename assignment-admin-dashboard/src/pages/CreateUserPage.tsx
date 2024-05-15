@@ -99,7 +99,7 @@ function CreateUserPage() {
     const response = await createUser(newUser);
     if (response.id) addUser({ ...newUser, id: response.id });
 
-    navigate('/admin');
+    navigate('/admin/users');
   };
 
   return (

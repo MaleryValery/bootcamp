@@ -11,7 +11,8 @@ type NavType = {
 };
 
 function CustomNav({ className, menu }: NavType) {
-  const { isAuth } = useAuth();
+  const { isAuth, handleLogout } = useAuth();
+
   return (
     <nav>
       <ul className={className}>
@@ -20,7 +21,11 @@ function CustomNav({ className, menu }: NavType) {
             {el[1]}
           </NavLink>
         ))}
-        {isAuth && <NavLink to="/">Logout</NavLink>}
+        {isAuth && (
+          <NavLink onClick={() => handleLogout()} to="/">
+            Logout
+          </NavLink>
+        )}
       </ul>
     </nav>
   );

@@ -1,6 +1,7 @@
 import { RouterProvider, createBrowserRouter } from 'react-router-dom';
 import LoginPage from './pages/LoginPage';
 import AppLayout from './pages/AppLayout';
+import Error from './UI/Error';
 import AuthProvider from './context/AuthProvider';
 import ProtectedRoute from './UI/ProtectedRoute';
 import UsersPage from './pages/UsersPage';
@@ -12,6 +13,8 @@ import UserProvider from './context/UserProvider';
 const router = createBrowserRouter([
   {
     path: '/',
+
+    errorElement: <Error />,
     element: <AppLayout />,
     children: [
       {
@@ -25,42 +28,30 @@ const router = createBrowserRouter([
       },
 
       {
-        path: '/admin',
         element: <ProtectedRoute path={'/login'} />,
+
         children: [
           {
-            index: true,
+            path: '/admin',
 
-            element: <UsersPage />,
-          },
-          {
-            path: 'adduser',
-            element: <CreateUserPage />,
-          },
-          {
-            path: 'updateuser',
-
-            element: <EditUsersPage />,
+            children: [
+              {
+                path: 'users',
+                index: true,
+                element: <UsersPage />,
+              },
+              {
+                path: 'adduser',
+                element: <CreateUserPage />,
+              },
+              {
+                path: 'updateuser',
+                element: <EditUsersPage />,
+              },
+            ],
           },
         ],
       },
-      // {
-      //   element: <ProtectedRoute path={'/login'} />,
-      //   children: [
-      //     {
-      //       path: 'users',
-      //       element: <UsersPage />,
-      //     },
-      //     {
-      //       path: 'adduser',
-      //       element: <EditUsersPage />,
-      //     },
-      //     {
-      //       path: 'updateuser',
-      //       element: <UpdateUsersPage />,
-      //     },
-      //   ],
-      // },
     ],
   },
 ]);

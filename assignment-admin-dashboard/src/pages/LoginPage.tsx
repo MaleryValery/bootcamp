@@ -88,7 +88,7 @@ function LoginPage() {
     }
 
     handleLogin();
-    navigate('/admin');
+    navigate('/admin/users');
   };
 
   return (

@@ -102,7 +102,7 @@ function EditUsersPage() {
     const response = await updateUserArr(state.user.id, newUser);
     if (response) updateUser({ ...state.user, ...newUser });
 
-    navigate('/admin');
+    navigate('/admin/users');
   };
 
   return (
