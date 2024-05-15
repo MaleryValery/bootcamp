@@ -2,9 +2,10 @@ import type { CreateUser, User } from '../types/User';
 import { encryptStr } from '../utils/encryptStr';
 import makeUUID from '../utils/makeUUID';
 import parseDate from '../utils/parseDate';
+import users from '../mocks/jsons/users.json';
 // MOCK METHODS
 
-const USERS: User[] = [];
+const USERS: User[] = users;
 
 // create a user
 export const createUser = async (

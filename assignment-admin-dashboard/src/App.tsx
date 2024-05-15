@@ -6,8 +6,8 @@ import ProtectedRoute from './UI/ProtectedRoute';
 import UsersPage from './pages/UsersPage';
 import Homepage from './pages/Homepage';
 import EditUsersPage from './pages/EditUsersPage';
-import UpdateUsersPage from './pages/CreateUserPage';
 import CreateUserPage from './pages/CreateUserPage';
+import UserProvider from './context/UserProvider';
 
 const router = createBrowserRouter([
   {
@@ -30,6 +30,7 @@ const router = createBrowserRouter([
         children: [
           {
             index: true,
+
             element: <UsersPage />,
           },
           {
@@ -67,7 +68,9 @@ const router = createBrowserRouter([
 function App() {
   return (
     <AuthProvider>
-      <RouterProvider router={router} />
+      <UserProvider>
+        <RouterProvider router={router} />
+      </UserProvider>
     </AuthProvider>
   );
 }

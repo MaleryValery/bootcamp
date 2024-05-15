@@ -4,17 +4,12 @@ import CustomForm from '../UI/CustomForm';
 import CustomInput from '../UI/CustomInput';
 import { FormEvent, useState } from 'react';
 import { createUser } from '../service/users';
-import users from '../mocks/jsons/users.json';
-
-type ErrorsObject = {
-  firstNameError: string;
-  emailError: string;
-  formError: string;
-};
-
-const emaiValidation = /^[\w-\.]+@([\w-]+\.)+[\w-]{2,4}$/;
+import { useUserContext } from '../context/UserContext';
+import { emaiValidation } from '../consts';
+import { ErrorsObject } from '../types/ErrorObject';
 
 function CreateUserPage() {
+  const { addUser } = useUserContext();
   const navigate = useNavigate();
   const [firstName, setFirstName] = useState('');
   const [email, setEmail] = useState('');
@@ -88,8 +83,6 @@ function CreateUserPage() {
     const isValue = firstName.length > 0 && email.length > 0;
     const isErrors = Object.values(errors).every((err) => err.length === 0);
 
-    // const admin = await login(firstName, email);
-
     if (!isValue || !isErrors) {
       setErrors((prev) => {
         return { ...prev, formError: 'Invalid form data' };
@@ -104,8 +97,8 @@ function CreateUserPage() {
       dob: new Date().toISOString(),
     };
     const response = await createUser(newUser);
-    if (response.id) users.push({ ...newUser, id: response.id });
-    
+    if (response.id) addUser({ ...newUser, id: response.id });
+
     navigate('/admin');
   };
 
