@@ -16,7 +16,7 @@ function CustomNav({ className, menu }: NavType) {
     <nav>
       <ul className={className}>
         {Object.entries(menu).map((el) => (
-          <NavLink key={el[0]} to={`/${el[0]}`}>
+          <NavLink key={el[0]} to={`/admin/${el[0]}`}>
             {el[1]}
           </NavLink>
         ))}

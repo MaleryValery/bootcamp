@@ -7,6 +7,7 @@ function UsersPage() {
       <ul>
         {users.map((user) => (
           <UserItem
+            key={user.id}
             name={user.firstName}
             email={user.email}
             role={user.lastName}

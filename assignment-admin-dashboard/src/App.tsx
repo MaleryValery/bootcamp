@@ -1,8 +1,4 @@
-import {
-  Navigate,
-  RouterProvider,
-  createBrowserRouter,
-} from 'react-router-dom';
+import { RouterProvider, createBrowserRouter } from 'react-router-dom';
 import LoginPage from './pages/LoginPage';
 import AppLayout from './pages/AppLayout';
 import AuthProvider from './context/AuthProvider';
@@ -10,7 +6,8 @@ import ProtectedRoute from './UI/ProtectedRoute';
 import UsersPage from './pages/UsersPage';
 import Homepage from './pages/Homepage';
 import EditUsersPage from './pages/EditUsersPage';
-import UpdateUsersPage from './pages/UpdateUsersPage';
+import UpdateUsersPage from './pages/CreateUserPage';
+import CreateUserPage from './pages/CreateUserPage';
 
 const router = createBrowserRouter([
   {
@@ -26,23 +23,43 @@ const router = createBrowserRouter([
         path: '/login',
         element: <LoginPage />,
       },
+
       {
+        path: '/admin',
         element: <ProtectedRoute path={'/login'} />,
         children: [
           {
-            path: 'users',
+            index: true,
             element: <UsersPage />,
           },
           {
             path: 'adduser',
-            element: <EditUsersPage />,
+            element: <CreateUserPage />,
           },
           {
             path: 'updateuser',
-            element: <UpdateUsersPage />,
+
+            element: <EditUsersPage />,
           },
         ],
       },
+      // {
+      //   element: <ProtectedRoute path={'/login'} />,
+      //   children: [
+      //     {
+      //       path: 'users',
+      //       element: <UsersPage />,
+      //     },
+      //     {
+      //       path: 'adduser',
+      //       element: <EditUsersPage />,
+      //     },
+      //     {
+      //       path: 'updateuser',
+      //       element: <UpdateUsersPage />,
+      //     },
+      //   ],
+      // },
     ],
   },
 ]);
