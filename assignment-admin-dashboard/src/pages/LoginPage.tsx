@@ -79,7 +79,7 @@ function LoginPage() {
     const isErrors = Object.values(errors).every((err) => err.length === 0);
 
     const admin = await login(name, password);
-    
+
     if (!isValue || !isErrors || !admin) {
       setErrors((prev) => {
         return { ...prev, formError: 'Invalid form data' };
@@ -92,15 +92,18 @@ function LoginPage() {
   };
 
   return (
-    <div className="flex w-11/12 max-w-64 flex-col place-content-center ">
-      LOGIN
-      <CustomForm onSubmit={handleSubmit} className="flex flex-col gap-5">
+    <div className="flex w-11/12 min-w-64 flex-col items-center py-10">
+      <h3 className="mb-4">LOGIN</h3>
+      <CustomForm
+        onSubmit={handleSubmit}
+        className="flex w-6/12 flex-col gap-5"
+      >
         <CustomInput
           value={name}
           onChange={(e) => handleChange('name', e.target.value)}
           placeholder="name"
           error={errors.nameError}
-          className="rounded border border-stone-900 bg-stone-100 px-3 py-2"
+          className="w-full rounded border border-stone-900 bg-stone-100 px-3 py-2"
         />
         <CustomInput
           value={password}
@@ -108,7 +111,7 @@ function LoginPage() {
           placeholder="password"
           type="password"
           error={errors.passworError}
-          className="rounded border border-stone-900 bg-stone-100 px-3 py-2"
+          className="w-full rounded border border-stone-900 bg-stone-100 px-3 py-2"
         />
         <CustomButton
           className="rounded-md bg-amber-200 px-3 py-2 uppercase text-stone-700"
