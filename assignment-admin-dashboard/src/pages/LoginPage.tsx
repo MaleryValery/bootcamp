@@ -94,35 +94,37 @@ function LoginPage() {
   };
 
   return (
-    <div className="flex w-11/12 min-w-64 flex-col items-center py-10">
-      <h3 className="mb-4 uppercase">{t('login')}</h3>
-      <CustomForm
-        onSubmit={handleSubmit}
-        className="flex w-6/12 flex-col gap-5"
-      >
-        <CustomInput
-          value={name}
-          onChange={(e) => handleChange('name', e.target.value)}
-          placeholder={t('name')}
-          error={errors.nameError}
-          className="w-full rounded border border-stone-900 bg-stone-100 px-3 py-2"
-        />
-        <CustomInput
-          value={password}
-          onChange={(e) => handleChange('password', e.target.value)}
-          placeholder={t('password')}
-          type="password"
-          error={errors.passworError}
-          className="w-full rounded border border-stone-900 bg-stone-100 px-3 py-2"
-        />
-        <CustomButton
-          className="rounded-md bg-amber-200 px-3 py-2 uppercase text-stone-700"
-          title={t('submit')}
-        />
-      </CustomForm>
-      {errors.formError.length > 0 && (
-        <p className="text-center text-xs text-red-500">{errors.formError}</p>
-      )}
+    <div className=" flex w-11/12 min-w-64 flex-col place-content-center py-10">
+      <div className="flex w-8/12 flex-col items-center self-center rounded-md border-2 border-stone-400 px-2 py-6">
+        <h3 className="mb-4 uppercase">{t('login')}</h3>
+        <CustomForm
+          onSubmit={handleSubmit}
+          className="flex w-10/12 flex-col gap-5"
+        >
+          <CustomInput
+            value={name}
+            onChange={(e) => handleChange('name', e.target.value)}
+            placeholder={t('name')}
+            error={errors.nameError}
+            className="w-full rounded border border-stone-400 bg-stone-50 px-3 py-2"
+          />
+          <CustomInput
+            value={password}
+            onChange={(e) => handleChange('password', e.target.value)}
+            placeholder={t('password')}
+            type="password"
+            error={errors.passworError}
+            className="w-full rounded border border-stone-400 bg-stone-50 px-3 py-2"
+          />
+          <CustomButton
+            className="rounded-md bg-amber-200 px-3 py-2 uppercase text-stone-700"
+            title={t('submit')}
+          />
+        </CustomForm>
+        {errors.formError.length > 0 && (
+          <p className="text-center text-xs text-red-500">{errors.formError}</p>
+        )}
+      </div>
     </div>
   );
 }

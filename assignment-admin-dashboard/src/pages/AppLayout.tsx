@@ -11,7 +11,7 @@ function AppLayout() {
           menu={NAV_BAR}
         />
       </header>
-      <main className=" flex place-content-center px-4">
+      <main className="flex flex-1 place-content-center overflow-y-auto  px-4">
         <Outlet />
       </main>
     </>

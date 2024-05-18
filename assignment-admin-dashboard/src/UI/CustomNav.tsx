@@ -35,8 +35,8 @@ function CustomNav({ className, menu }: NavType) {
   };
 
   return (
-    <nav>
-      <ul className={`${className} hidden sm:flex`}>
+    <nav className=" flex flex-1 flex-col ">
+      <ul className={`${className}hidden self-start sm:flex`}>
         <li>
           <NavLink to="/" className="text-l flex items-center gap-2">
             <TbLayoutDashboardFilled size={24} /> DashBoard
@@ -109,11 +109,11 @@ function CustomNav({ className, menu }: NavType) {
         <div
           className={
             !isMenu
-              ? '-right-full hidden'
-              : 'absolute left-0 right-0 top-[55px] z-30 h-screen bg-amber-50 p-4 transition duration-300'
+              ? 'hidden'
+              : 'absolute left-0 right-0 top-[55px] z-30 h-full bg-amber-50'
           }
         >
-          <ul className=" flex flex-col items-center space-y-6 pt-6 text-xl">
+          <ul className=" flex flex-col items-center space-y-6 p-4 pt-6 text-xl ">
             {Object.entries(menu).map((el) => {
               return (
                 <NavLink

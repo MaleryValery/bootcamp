@@ -5,3 +5,5 @@ export const NAV_BAR = {
 };
 
 export const emaiValidation = /^[\w-\.]+@([\w-]+\.)+[\w-]{2,4}$/;
+
+export const limit = 5;

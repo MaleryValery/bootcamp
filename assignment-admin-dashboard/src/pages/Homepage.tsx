@@ -8,7 +8,7 @@ function Homepage() {
       <h1 className="text-3xl uppercase">{t('welcome')}</h1>
       <h3 className="mb-10 text-xl">{t('loginToStart')}</h3>
       <section>
-        <p>{t('disc')}</p>
+        <p className="pb-4">{t('disc')}</p>
         <p>{t('features')}</p>
         <h3 className="py-2 text-xl">{t('stack')}</h3>
         <div className="flex flex-col items-center">
