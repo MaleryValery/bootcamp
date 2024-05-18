@@ -1,6 +1,6 @@
 export const NAV_BAR = {
-  users: 'View Users',
-  adduser: 'Create User',
+  viewUsers: 'View Users',
+  createUsers: 'Create User',
   // updateuser: 'Edit User',
 };
 

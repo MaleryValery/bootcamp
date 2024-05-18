@@ -1,7 +1,7 @@
 import { ButtonHTMLAttributes } from 'react';
 
 type ButtonType = {
-  title: string;
+  title?: string;
 } & ButtonHTMLAttributes<HTMLButtonElement>;
 
 function CustomButton({ title, ...rest }: ButtonType) {

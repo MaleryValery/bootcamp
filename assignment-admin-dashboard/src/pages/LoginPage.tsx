@@ -5,6 +5,7 @@ import { FormEvent, useState } from 'react';
 import { useAuth } from '../context/AuthContext';
 import { login } from '../service/auth';
 import { useNavigate } from 'react-router-dom';
+import { useTranslation } from 'react-i18next';
 
 type ErrorsObject = {
   nameError: string;
@@ -12,6 +13,7 @@ type ErrorsObject = {
   formError: string;
 };
 function LoginPage() {
+  const { t } = useTranslation();
   const { handleLogin } = useAuth();
   const navigate = useNavigate();
   const [name, setName] = useState('');
@@ -88,12 +90,12 @@ function LoginPage() {
     }
 
     handleLogin();
-    navigate('/admin/users');
+    navigate('/admin/viewUsers');
   };
 
   return (
     <div className="flex w-11/12 min-w-64 flex-col items-center py-10">
-      <h3 className="mb-4">LOGIN</h3>
+      <h3 className="mb-4 uppercase">{t('login')}</h3>
       <CustomForm
         onSubmit={handleSubmit}
         className="flex w-6/12 flex-col gap-5"
@@ -101,21 +103,21 @@ function LoginPage() {
         <CustomInput
           value={name}
           onChange={(e) => handleChange('name', e.target.value)}
-          placeholder="name"
+          placeholder={t('name')}
           error={errors.nameError}
           className="w-full rounded border border-stone-900 bg-stone-100 px-3 py-2"
         />
         <CustomInput
           value={password}
           onChange={(e) => handleChange('password', e.target.value)}
-          placeholder="password"
+          placeholder={t('password')}
           type="password"
           error={errors.passworError}
           className="w-full rounded border border-stone-900 bg-stone-100 px-3 py-2"
         />
         <CustomButton
           className="rounded-md bg-amber-200 px-3 py-2 uppercase text-stone-700"
-          title="submit"
+          title={t('submit')}
         />
       </CustomForm>
       {errors.formError.length > 0 && (

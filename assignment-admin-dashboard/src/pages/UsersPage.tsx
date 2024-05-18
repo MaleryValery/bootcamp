@@ -4,17 +4,23 @@ import { useUserContext } from '../context/UserContext';
 function UsersPage() {
   const { users } = useUserContext();
   return (
-    <div>
-      <ul>
+    <table className="sm:text-md w-11/12 text-base">
+      <thead>
+        <tr className="text-left">
+          <th className="">Name</th>
+          <th className="hidden sm:block">Surname</th>
+          <th className=" ">Email</th>
+          <th className="hidden sm:block">Date Of Birth</th>
+          <th className=" " />
+          <th className=" " />
+        </tr>
+      </thead>
+      <tbody>
         {users.map((user) => (
-          <UserItem
-            key={user.id}
-            user={user}
-           
-          />
+          <UserItem key={user.id} user={user} />
         ))}
-      </ul>
-    </div>
+      </tbody>
+    </table>
   );
 }
 

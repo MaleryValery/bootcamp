@@ -34,12 +34,12 @@ const router = createBrowserRouter([
             path: '/admin',
             children: [
               {
-                path: 'users',
+                path: 'viewUsers',
                 index: true,
                 element: <UsersPage />,
               },
               {
-                path: 'adduser',
+                path: 'createUsers',
                 element: <CreateUserPage />,
               },
               {

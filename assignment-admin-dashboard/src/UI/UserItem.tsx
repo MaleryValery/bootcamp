@@ -1,5 +1,7 @@
 import { useNavigate } from 'react-router-dom';
 import { useUserContext } from '../context/UserContext';
+import { RiDeleteBin2Line } from 'react-icons/ri';
+import { GrEdit } from 'react-icons/gr';
 import { User } from '../types/User';
 
 type UserType = {
@@ -10,22 +12,24 @@ function UserItem({ user }: UserType) {
   const { deleteUser } = useUserContext();
   const navigate = useNavigate();
   return (
-    <li className="m-2 flex justify-between gap-2 rounded bg-stone-200 p-4">
-      <div>
-        <p>
-          {user.firstName} {user.lastName}
-        </p>
-        <p>{user.email}</p>
-      </div>
-      <div className="flex flex-col gap-2">
-        <button onClick={() => deleteUser(user.id)}>❌</button>
+    <tr className="">
+      <td>{user.firstName}</td>
+      <td className="hidden sm:block">{user.lastName}</td>
+      <td>{user.email}</td>
+      <td className="hidden sm:block">{user.dob}</td>
+      <td>
+        <button onClick={() => deleteUser(user.id)}>
+          <RiDeleteBin2Line className="hover:scale-105" />
+        </button>
+      </td>
+      <td>
         <button
           onClick={() => navigate('/admin/updateuser', { state: { user } })}
         >
-          ✏️
+          <GrEdit className="hover:rotate-12" />
         </button>
-      </div>
-    </li>
+      </td>
+    </tr>
   );
 }
 
