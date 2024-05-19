@@ -10,7 +10,7 @@ import EditUsersPage from './pages/EditUsersPage';
 import CreateUserPage from './pages/CreateUserPage';
 import UserProvider from './context/UserProvider';
 import { I18nextProvider } from 'react-i18next';
-import index from '../src/i18n';
+import index from './i18n';
 import ThemeProvider from './context/ThemeProvider';
 
 const router = createBrowserRouter([
