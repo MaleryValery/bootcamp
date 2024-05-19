@@ -1,0 +1,62 @@
+[
+  {
+    "id": "936e3b6c-0c80-4b6b-ba81-c98dda693732",
+    "title": "Stoked: The Rise and Fall of Gator",
+    "price": 85,
+    "authorId": "fd010db7-daf8-471c-9ffb-e5e783875e76"
+  },
+  {
+    "id": "89f1af39-ada1-4c3a-8905-2cf606eaa59c",
+    "title": "Love Actually",
+    "price": 72,
+    "authorId": "ca66f15a-9f7b-4023-8db8-88956b4516ff"
+  },
+  {
+    "id": "1bc3052a-1bcd-4d36-af57-44093868b7a5",
+    "title": "Over Your Dead Body",
+    "price": 84,
+    "authorId": "23b2cb7d-27f8-462b-8b56-42eb9f3ef28d"
+  },
+  {
+    "id": "89b1c488-3bb5-4ada-916c-d7f49c04deb7",
+    "title": "Reefer Madness: The Movie Musical",
+    "price": 75,
+    "authorId": "fd010db7-daf8-471c-9ffb-e5e783875e76"
+  },
+  {
+    "id": "6056749f-f684-4ec5-b892-55bb5e6da658",
+    "title": "Pelican Brief, The",
+    "price": 95,
+    "authorId": "23b2cb7d-27f8-462b-8b56-42eb9f3ef28d"
+  },
+  {
+    "id": "b1e26853-fda3-4b1b-90bd-1bb21d585f69",
+    "title": "Wrong Side Up (Pribehy obycejneho silenstvi)",
+    "price": 78,
+    "authorId": "fd010db7-daf8-471c-9ffb-e5e783875e76"
+  },
+  {
+    "id": "9a201ae9-c24f-460f-b3d7-677445d487f1",
+    "title": "Foreigner, The",
+    "price": 38,
+    "authorId": "cb9f1d0e-9fa0-4657-8085-86cc434c7f7e"
+  },
+  {
+    "id": "ff839864-ae9c-4c89-a637-bdc2baae92b2",
+    "title": "Dangerous Woman, A",
+    "price": 17,
+    "authorId": "cb9f1d0e-9fa0-4657-8085-86cc434c7f7e"
+  },
+  {
+    "id": "2d4fea30-f077-4607-b7ce-cd83b2f6360c",
+    "title": "Question of Silence, A (De stilte rond Christine M.)",
+    "price": 38,
+    "authorId": "055a04eb-a672-44b5-b198-1b18bedbce4c"
+  },
+  {
+    "id": "2f3214a6-6717-407c-8e1b-2bd2e8472541",
+    "title": "Normal Adolescent Behavior",
+    "price": 39,
+    "authorId": "14a6b49e-9298-4358-a434-304b1bf1941b"
+  }
+]
