@@ -7,6 +7,9 @@ import { LuLogOut } from 'react-icons/lu';
 import { CgMenuGridO } from 'react-icons/cg';
 import CustomIconButton from './CustomIconButton';
 import { useState } from 'react';
+import { MdOutlineDarkMode } from 'react-icons/md';
+import { MdOutlineLightMode } from 'react-icons/md';
+import { useTheme } from '../context/ThemeContext';
 
 type NavType = {
   className: string;
@@ -19,6 +22,7 @@ type NavType = {
 function CustomNav({ className, menu }: NavType) {
   const [isMenu, setIsMenu] = useState(false);
   const { isAuth, handleLogout } = useAuth();
+  const { theme, handleChangeTheme } = useTheme();
   const navigator = useNavigate();
   const {
     t,
@@ -35,8 +39,8 @@ function CustomNav({ className, menu }: NavType) {
   };
 
   return (
-    <nav className=" flex flex-1 flex-col ">
-      <ul className={`${className}hidden self-start sm:flex`}>
+    <nav className="flex flex-1 flex-col dark:text-[#B9B4C7] ">
+      <ul className={`${className} hidden self-start sm:flex`}>
         <li>
           <NavLink to="/" className="text-l flex items-center gap-2">
             <TbLayoutDashboardFilled size={24} /> DashBoard
@@ -49,11 +53,34 @@ function CustomNav({ className, menu }: NavType) {
             </NavLink>
           );
         })}
-
-        <li className="ml-auto">
+        <li className="ml-auto pl-2">
+          <CustomIconButton
+            onClick={handleChangeTheme}
+            icon={
+              theme === 'dark' ? (
+                <MdOutlineDarkMode className="dark:fill-[#B9B4C7]" size={24} />
+              ) : (
+                <MdOutlineLightMode size={24} />
+              )
+            }
+          />
+        </li>
+        <li>
           <CustomIconButton
             onClick={handleLoginLogout}
-            icon={isAuth ? <LuLogOut size={24} /> : <LuLogIn size={24} />}
+            icon={
+              isAuth ? (
+                <LuLogOut
+                  color={theme === 'dark' ? '#B9B4C7' : '#352f44'}
+                  size={24}
+                />
+              ) : (
+                <LuLogIn
+                  color={theme === 'dark' ? '#B9B4C7' : '#352f44'}
+                  size={24}
+                />
+              )
+            }
           />
         </li>
 
@@ -88,6 +115,18 @@ function CustomNav({ className, menu }: NavType) {
         </li>
         <li className="pl-2">
           <CustomIconButton
+            onClick={handleChangeTheme}
+            icon={
+              theme === 'light' ? (
+                <MdOutlineDarkMode size={24} />
+              ) : (
+                <MdOutlineLightMode size={24} />
+              )
+            }
+          />
+        </li>
+        <li className="pl-2">
+          <CustomIconButton
             onClick={() => {
               setIsMenu(false);
               handleLoginLogout();
@@ -110,7 +149,7 @@ function CustomNav({ className, menu }: NavType) {
           className={
             !isMenu
               ? 'hidden'
-              : 'absolute left-0 right-0 top-[55px] z-30 h-full bg-amber-50'
+              : 'absolute left-0 right-0 top-[55px] z-30 h-full bg-amber-50 dark:bg-[#5C5470] dark:text-[#FAF0E6]'
           }
         >
           <ul className=" flex flex-col items-center space-y-6 p-4 pt-6 text-xl ">

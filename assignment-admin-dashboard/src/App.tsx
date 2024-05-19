@@ -11,6 +11,7 @@ import CreateUserPage from './pages/CreateUserPage';
 import UserProvider from './context/UserProvider';
 import { I18nextProvider } from 'react-i18next';
 import index from '../src/i18n';
+import ThemeProvider from './context/ThemeProvider';
 
 const router = createBrowserRouter([
   {
@@ -57,11 +58,13 @@ const router = createBrowserRouter([
 function App() {
   return (
     <I18nextProvider i18n={index}>
+      <ThemeProvider>
       <AuthProvider>
         <UserProvider>
           <RouterProvider router={router} />
         </UserProvider>
       </AuthProvider>
+      </ThemeProvider>
     </I18nextProvider>
   );
 }

@@ -11,3 +11,13 @@ body {
   display: flex;
   flex-direction: column;
 }
+#root.dark {
+  background: #352f44;
+}
+
+/* 
+#352f44
+#5C5470
+#B9B4C7
+#FAF0E6 
+*/

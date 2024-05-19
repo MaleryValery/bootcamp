@@ -6,7 +6,10 @@ import { User } from '../types/User';
 import { FaSortAmountDown } from 'react-icons/fa';
 import { FaSortAmountUp } from 'react-icons/fa';
 
+import { useTranslation } from 'react-i18next';
+
 function UsersPage() {
+  const { t } = useTranslation();
   const { users, sortUsers } = useUserContext();
   const [sortType, setSortType] = useState(Sort.asc);
   const [sortField, setSortField] = useState<keyof User | null>();
@@ -31,33 +34,36 @@ function UsersPage() {
   };
 
   return (
-    <div>
-      <table className="w-11/12 place-self-start text-base sm:text-[15px]">
-        <thead className="bg-lime-200 backdrop-opacity-50">
+    <div className="w-11/12 pt-10">
+      <table className="w-full place-self-start text-base sm:text-[15px]">
+        <thead className="border-b-2 border-stone-500 dark:border-[#B9B4C7] dark:text-[#FAF0E6] dark:text-opacity-80">
           <tr className="text-left">
-            <th onClick={() => handleSortUser('firstName')}>
-              Name {sortField === 'firstName' ? icon : ''}
+            <th
+              onClick={() => handleSortUser('firstName')}
+              className="capitalize"
+            >
+              {t('name')} {sortField === 'firstName' ? icon : ''}
             </th>
             <th
               onClick={() => handleSortUser('lastName')}
-              className="hidden sm:block"
+              className="capitalize hidden py-2 sm:block"
             >
-              Surname {sortField === 'lastName' ? icon : ''}
+              {t('surname')} {sortField === 'lastName' ? icon : ''}
             </th>
-            <th onClick={() => handleSortUser('email')} className=" ">
-              Email {sortField === 'email' ? icon : ''}
+            <th onClick={() => handleSortUser('email')} className="capitalize ">
+              {t('email')} {sortField === 'email' ? icon : ''}
             </th>
             <th
               onClick={() => handleSortUser('dob')}
-              className="hidden sm:block"
+              className="capitalize hidden sm:block"
             >
-              Date Of Birth {sortField === 'dob' ? icon : ''}
+              {t('dob')} {sortField === 'dob' ? icon : ''}
             </th>
             <th className=" " />
             <th className=" " />
           </tr>
         </thead>
-        <tbody>
+        <tbody className="dark:text-[#B9B4C7]">
           {users.map((user) => (
             <UserItem key={user.id} user={user} />
           ))}

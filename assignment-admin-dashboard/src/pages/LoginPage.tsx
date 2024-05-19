@@ -6,6 +6,7 @@ import { useAuth } from '../context/AuthContext';
 import { login } from '../service/auth';
 import { useNavigate } from 'react-router-dom';
 import { useTranslation } from 'react-i18next';
+import { CiUnlock } from 'react-icons/ci';
 
 type ErrorsObject = {
   nameError: string;
@@ -95,8 +96,11 @@ function LoginPage() {
 
   return (
     <div className=" flex w-11/12 min-w-64 flex-col place-content-center py-10">
-      <div className="flex w-8/12 flex-col items-center self-center rounded-md border-2 border-stone-400 px-2 py-6">
-        <h3 className="mb-4 uppercase">{t('login')}</h3>
+      <div className="flex w-full flex-col items-center self-center rounded-md px-2 py-6 sm:w-8/12">
+        <div className="mb-2 h-10 w-10 rounded-full bg-lime-100 p-3 dark:bg-lime-200 dark:bg-opacity-80">
+          <CiUnlock />
+        </div>
+        <h3 className="mb-4 uppercase dark:text-[#FAF0E6]">{t('login')}</h3>
         <CustomForm
           onSubmit={handleSubmit}
           className="flex w-10/12 flex-col gap-5"
@@ -106,7 +110,7 @@ function LoginPage() {
             onChange={(e) => handleChange('name', e.target.value)}
             placeholder={t('name')}
             error={errors.nameError}
-            className="w-full rounded border border-stone-400 bg-stone-50 px-3 py-2"
+            className="dark:bg-opasity-40 w-full rounded border border-stone-400 bg-stone-50 px-3 py-2 dark:bg-opacity-50 dark:placeholder:text-[#352f44]"
           />
           <CustomInput
             value={password}
@@ -114,10 +118,10 @@ function LoginPage() {
             placeholder={t('password')}
             type="password"
             error={errors.passworError}
-            className="w-full rounded border border-stone-400 bg-stone-50 px-3 py-2"
+            className="w-full rounded border border-stone-400 bg-stone-50 px-3 py-2 dark:bg-opacity-50 dark:placeholder:text-[#352f44]"
           />
           <CustomButton
-            className="rounded-md bg-amber-200 px-3 py-2 uppercase text-stone-700"
+            className="rounded-md bg-amber-200 px-3 py-2 uppercase text-stone-700 dark:bg-lime-200 dark:bg-opacity-80 dark:text-[#352f44]"
             title={t('submit')}
           />
         </CustomForm>
