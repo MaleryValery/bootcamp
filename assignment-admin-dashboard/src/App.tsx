@@ -9,6 +9,9 @@ import Homepage from './pages/Homepage';
 import EditUsersPage from './pages/EditUsersPage';
 import CreateUserPage from './pages/CreateUserPage';
 import UserProvider from './context/UserProvider';
+import { I18nextProvider } from 'react-i18next';
+import index from '../src/i18n';
+import ThemeProvider from './context/ThemeProvider';
 
 const router = createBrowserRouter([
   {
@@ -32,12 +35,12 @@ const router = createBrowserRouter([
             path: '/admin',
             children: [
               {
-                path: 'users',
+                path: 'viewUsers',
                 index: true,
                 element: <UsersPage />,
               },
               {
-                path: 'adduser',
+                path: 'createUsers',
                 element: <CreateUserPage />,
               },
               {
@@ -54,11 +57,15 @@ const router = createBrowserRouter([
 
 function App() {
   return (
-    <AuthProvider>
-      <UserProvider>
-        <RouterProvider router={router} />
-      </UserProvider>
-    </AuthProvider>
+    <I18nextProvider i18n={index}>
+      <ThemeProvider>
+      <AuthProvider>
+        <UserProvider>
+          <RouterProvider router={router} />
+        </UserProvider>
+      </AuthProvider>
+      </ThemeProvider>
+    </I18nextProvider>
   );
 }
 

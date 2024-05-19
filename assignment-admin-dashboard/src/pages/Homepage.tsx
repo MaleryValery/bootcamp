@@ -1,13 +1,60 @@
-import { Link } from 'react-router-dom';
+import { useTranslation } from 'react-i18next';
+import { FaCheck } from 'react-icons/fa';
+import { useTheme } from '../context/ThemeContext';
 
 function Homepage() {
+  const { t } = useTranslation();
+  const { theme } = useTheme();
   return (
-    <div className="mt-10 text-center ">
-      <h1 className="text-[32px] uppercase">Welcome</h1>
-      <h3 className="mb-10 text-xl">login to start</h3>
-      <Link className="rounded bg-amber-400 px-6 py-3  text-xl" to="/login">
-        LOGIN
-      </Link>
+    <div className="mt-10 text-center dark:text-[#B9B4C7]">
+      <h1 className="text-3xl uppercase dark:text-[#FAF0E6]">{t('welcome')}</h1>
+      <h3 className="mb-10 text-xl dark:text-[#B9B4C7] dark:text-opacity-40">
+        {t('loginToStart')}
+      </h3>
+      <section>
+        <p className="pb-4">{t('disc')}</p>
+        <p>{t('features')}</p>
+        <h3 className="py-2 text-xl  dark:text-[#FAF0E6]">{t('stack')}</h3>
+        <div className="flex flex-col items-center">
+          <ul className="pl-6">
+            <li className="flex items-center gap-2">
+              <FaCheck
+                color={theme !== 'dark' ? '#fbbf24' : '#d9f99d'}
+                size={16}
+              />
+              <span>React + TS</span>
+            </li>
+            <li className="flex items-center gap-2">
+              <FaCheck
+                color={theme !== 'dark' ? '#fbbf24' : '#d9f99d'}
+                size={16}
+              />
+              <span>React Router</span>
+            </li>
+            <li className="flex items-center gap-2">
+              <FaCheck
+                color={theme !== 'dark' ? '#fbbf24' : '#d9f99d'}
+                size={16}
+              />
+              <span>React Context API</span>
+            </li>
+            <li className="flex items-center gap-2">
+              <FaCheck
+                color={theme !== 'dark' ? '#fbbf24' : '#d9f99d'}
+                size={16}
+              />
+              <span>TailWind</span>
+            </li>
+            <li className="flex items-center gap-2">
+              <FaCheck
+                color={theme !== 'dark' ? '#fbbf24' : '#d9f99d'}
+                size={16}
+              />
+              <span>i18n</span>
+            </li>
+          </ul>
+        </div>
+      </section>
     </div>
   );
 }

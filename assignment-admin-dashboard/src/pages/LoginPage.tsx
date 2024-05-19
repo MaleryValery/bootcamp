@@ -5,6 +5,8 @@ import { FormEvent, useState } from 'react';
 import { useAuth } from '../context/AuthContext';
 import { login } from '../service/auth';
 import { useNavigate } from 'react-router-dom';
+import { useTranslation } from 'react-i18next';
+import { CiUnlock } from 'react-icons/ci';
 
 type ErrorsObject = {
   nameError: string;
@@ -12,6 +14,7 @@ type ErrorsObject = {
   formError: string;
 };
 function LoginPage() {
+  const { t } = useTranslation();
   const { handleLogin } = useAuth();
   const navigate = useNavigate();
   const [name, setName] = useState('');
@@ -88,39 +91,44 @@ function LoginPage() {
     }
 
     handleLogin();
-    navigate('/admin/users');
+    navigate('/admin/viewUsers');
   };
 
   return (
-    <div className="flex w-11/12 min-w-64 flex-col items-center py-10">
-      <h3 className="mb-4">LOGIN</h3>
-      <CustomForm
-        onSubmit={handleSubmit}
-        className="flex w-6/12 flex-col gap-5"
-      >
-        <CustomInput
-          value={name}
-          onChange={(e) => handleChange('name', e.target.value)}
-          placeholder="name"
-          error={errors.nameError}
-          className="w-full rounded border border-stone-900 bg-stone-100 px-3 py-2"
-        />
-        <CustomInput
-          value={password}
-          onChange={(e) => handleChange('password', e.target.value)}
-          placeholder="password"
-          type="password"
-          error={errors.passworError}
-          className="w-full rounded border border-stone-900 bg-stone-100 px-3 py-2"
-        />
-        <CustomButton
-          className="rounded-md bg-amber-200 px-3 py-2 uppercase text-stone-700"
-          title="submit"
-        />
-      </CustomForm>
-      {errors.formError.length > 0 && (
-        <p className="text-center text-xs text-red-500">{errors.formError}</p>
-      )}
+    <div className=" flex w-11/12 min-w-64 flex-col place-content-center py-10">
+      <div className="flex w-full flex-col items-center self-center rounded-md px-2 py-6 sm:w-8/12">
+        <div className="mb-2 h-10 w-10 rounded-full bg-lime-100 p-3 dark:bg-lime-200 dark:bg-opacity-80">
+          <CiUnlock />
+        </div>
+        <h3 className="mb-4 uppercase dark:text-[#FAF0E6]">{t('login')}</h3>
+        <CustomForm
+          onSubmit={handleSubmit}
+          className="flex w-10/12 flex-col gap-5"
+        >
+          <CustomInput
+            value={name}
+            onChange={(e) => handleChange('name', e.target.value)}
+            placeholder={t('name')}
+            error={errors.nameError}
+            className="dark:bg-opasity-40 w-full rounded border border-stone-400 bg-stone-50 px-3 py-2 dark:bg-opacity-50 dark:placeholder:text-[#352f44]"
+          />
+          <CustomInput
+            value={password}
+            onChange={(e) => handleChange('password', e.target.value)}
+            placeholder={t('password')}
+            type="password"
+            error={errors.passworError}
+            className="w-full rounded border border-stone-400 bg-stone-50 px-3 py-2 dark:bg-opacity-50 dark:placeholder:text-[#352f44]"
+          />
+          <CustomButton
+            className="rounded-md bg-amber-200 px-3 py-2 uppercase text-stone-700 dark:bg-lime-200 dark:bg-opacity-80 dark:text-[#352f44]"
+            title={t('submit')}
+          />
+        </CustomForm>
+        {errors.formError.length > 0 && (
+          <p className="text-center text-xs text-red-500">{errors.formError}</p>
+        )}
+      </div>
     </div>
   );
 }

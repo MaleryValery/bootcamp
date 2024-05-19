@@ -1,7 +1,9 @@
 export const NAV_BAR = {
-  users: 'View Users',
-  adduser: 'Create User',
+  viewUsers: 'View Users',
+  createUsers: 'Create User',
   // updateuser: 'Edit User',
 };
 
 export const emaiValidation = /^[\w-\.]+@([\w-]+\.)+[\w-]{2,4}$/;
+
+export const limit = 5;

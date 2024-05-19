@@ -10,7 +10,10 @@ import { ErrorsObject } from '../types/ErrorObject';
 import { updateUser as updateUserArr } from '../service/users';
 import { User } from '../types/User';
 
+import { useTranslation } from 'react-i18next';
+
 function EditUsersPage() {
+  const { t } = useTranslation();
   const { state } = useLocation();
   const { email, firstName } = state.user as User;
   const { updateUser } = useUserContext();
@@ -107,7 +110,7 @@ function EditUsersPage() {
 
   return (
     <div className="flex w-11/12 min-w-64 flex-col items-center py-10">
-      <h3 className="mb-4 uppercase">Create a new user</h3>
+      <h3 className="mb-4 uppercase dark:text-[#FAF0E6]">{t('updateUser')}</h3>
       <CustomForm
         onSubmit={handleSubmit}
         className="flex w-6/12 flex-col gap-5"
@@ -115,22 +118,22 @@ function EditUsersPage() {
         <CustomInput
           value={newFirstName}
           onChange={(e) => handleChange('firstName', e.target.value)}
-          placeholder="name"
+          placeholder={t('name')}
           error={errors.firstNameError}
-          className="w-full rounded border border-stone-900 bg-stone-100 px-3 py-2"
+          className="dark:bg-opasity-40 w-full rounded border border-stone-400 bg-stone-50 px-3 py-2 dark:bg-opacity-50 dark:placeholder:text-[#352f44]"
         />
         <CustomInput
           value={newEmail}
           onChange={(e) => handleChange('email', e.target.value)}
-          placeholder="email"
+          placeholder={t('email')}
           type="email"
           error={errors.emailError}
-          className="w-full rounded border border-stone-900 bg-stone-100 px-3 py-2"
+          className="dark:bg-opasity-40 w-full rounded border border-stone-400 bg-stone-50 px-3 py-2 dark:bg-opacity-50 dark:placeholder:text-[#352f44]"
         />
 
         <CustomButton
-          className="rounded-md bg-amber-200 px-3 py-2 uppercase text-stone-700"
-          title="submit"
+          className="rounded-md bg-amber-200 px-3 py-2 uppercase text-stone-700 dark:bg-lime-200 dark:bg-opacity-80 dark:text-[#352f44]"
+          title={t('submit')}
         />
       </CustomForm>
       {errors.formError.length > 0 && (

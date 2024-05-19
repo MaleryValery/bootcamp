@@ -7,8 +7,10 @@ import { createUser } from '../service/users';
 import { useUserContext } from '../context/UserContext';
 import { emaiValidation } from '../consts';
 import { ErrorsObject } from '../types/ErrorObject';
+import { useTranslation } from 'react-i18next';
 
 function CreateUserPage() {
+  const { t } = useTranslation();
   const { addUser } = useUserContext();
   const navigate = useNavigate();
   const [firstName, setFirstName] = useState('');
@@ -99,12 +101,14 @@ function CreateUserPage() {
     const response = await createUser(newUser);
     if ('id' in response) addUser({ ...newUser, id: response.id });
 
-    navigate('/admin/users');
+    navigate('/admin/viewUsers');
   };
 
   return (
     <div className="flex w-11/12 min-w-64 flex-col items-center py-10">
-      <h3 className="mb-4 uppercase">Create a new user</h3>
+      <h3 className="mb-4 uppercase dark:text-[#FAF0E6]">
+        {t('createANewUser')}
+      </h3>
       <CustomForm
         onSubmit={handleSubmit}
         className="flex w-6/12 flex-col gap-5"
@@ -112,25 +116,29 @@ function CreateUserPage() {
         <CustomInput
           value={firstName}
           onChange={(e) => handleChange('firstName', e.target.value)}
-          placeholder="name"
+          placeholder={t('name')}
           error={errors.firstNameError}
-          className="w-full rounded border border-stone-900 bg-stone-100 px-3 py-2"
+          className="w-full rounded border border-stone-400 bg-stone-50 px-3 py-2 dark:bg-opacity-50 dark:placeholder:text-[#352f44]"
         />
         <CustomInput
           value={email}
           onChange={(e) => handleChange('email', e.target.value)}
-          placeholder="email"
+          placeholder={t('email')}
           type="email"
           error={errors.emailError}
-          className="w-full rounded border border-stone-900 bg-stone-100 px-3 py-2"
+          className="w-full rounded border border-stone-400 bg-stone-50 px-3 py-2 dark:bg-opacity-50 dark:placeholder:text-[#352f44]"
         />
-        <select value={role} onChange={(e) => setRole(e.target.value)}>
-          <option value="user">user</option>
-          <option value="admin">admin</option>
+        <select
+          className="rounded bg-stone-50 p-2 dark:bg-opacity-50 "
+          value={role}
+          onChange={(e) => setRole(e.target.value)}
+        >
+          <option value="user">{t('user')}</option>
+          <option value="admin">{t('admin')}</option>
         </select>
         <CustomButton
-          className="rounded-md bg-amber-200 px-3 py-2 uppercase text-stone-700"
-          title="submit"
+          className="rounded-md bg-amber-200 px-3 py-2 uppercase text-stone-700 dark:bg-lime-200 dark:bg-opacity-80 dark:text-[#352f44]"
+          title={t('submit')}
         />
       </CustomForm>
       {errors.formError.length > 0 && (
