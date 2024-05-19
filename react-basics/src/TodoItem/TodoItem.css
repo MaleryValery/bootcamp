@@ -1,0 +1,31 @@
+.todo__item {
+  display: flex;
+  width: 100%;
+  justify-content: start;
+  align-items: center;
+  gap: 10px;
+  margin-bottom: 10px;
+  background-color: #f9f9f9;
+  padding: 10px;
+  border-radius: 10px;
+}
+
+.item__image {
+  border-radius: 10px;
+  width: 40px;
+  height: 40px;
+  align-self: flex-start;
+  object-fit: cover;
+}
+.item__delete-btn {
+  background-color: transparent;
+
+  padding: 5px;
+}
+
+.done {
+  text-decoration: line-through;
+}
+.date {
+  margin-left: auto;
+}
