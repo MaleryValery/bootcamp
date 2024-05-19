@@ -1,0 +1,23 @@
+{
+  "translation": {
+    "viewUsers": "view users",
+    "createUsers": "create users",
+    "logout": "logout",
+    "welcome": "welcome",
+    "loginToStart": "login to start",
+    "login": "login",
+    "password": "password",
+    "name": "name",
+    "surname": "surname",
+    "dob": "date of birth",
+    "email": "email",
+    "user": "user",
+    "admin": "admin",
+    "submit": "submit",
+    "updateUser": "update user",
+    "createANewUser": "create a new user",
+    "disc": "This small simple app provides users information.",
+    "features": "With admin access you are able to filter, search, create, update and delete users.",
+    "stack": "Main Stack"
+  }
+}

@@ -1,0 +1,44 @@
+
+  [
+    {
+      "id": "user1",
+      "firstName": "John",
+      "lastName": "Doe",
+      "email": "john.doe@example.com",
+      "password": "password123",
+      "dob": "1990-05-20"
+    },
+    {
+      "id": "user2",
+      "firstName": "Alice",
+      "lastName": "Smith",
+      "email": "alice.smith@example.com",
+      "password": "abc@123",
+      "dob": "1985-08-12"
+    },
+    {
+      "id": "user3",
+      "firstName": "Michael",
+      "lastName": "Johnson",
+      "email": "michael.johnson@example.com",
+      "password": "securePassword",
+      "dob": "1982-03-30"
+    },
+    {
+      "id": "user4",
+      "firstName": "Emily",
+      "lastName": "Brown",
+      "email": "emily.brown@example.com",
+      "password": "brownie456",
+      "dob": "1978-11-15"
+    },
+    {
+      "id": "user5",
+      "firstName": "David",
+      "lastName": "Miller",
+      "email": "david.miller@example.com",
+      "password": "dav1234",
+      "dob": "1995-09-25"
+    }
+  ]
+
