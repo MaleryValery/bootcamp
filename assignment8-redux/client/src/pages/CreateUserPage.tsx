@@ -2,7 +2,7 @@ import React, { useState } from 'react';
 import { useTranslation } from 'react-i18next';
 import InputField from '../components/InputField';
 import { createUser as createUserService } from '../service/users';
-import { useAppDispatch, useAppSelector } from '../store';
+import { useAppDispatch } from '../store';
 import { createUser } from '../store/slices/users';
 import { useNavigate } from 'react-router-dom';
 
@@ -15,8 +15,6 @@ const CreateUserPage: React.FC = () => {
   const [errors, setErrors] = useState<{ [key: string]: string }>({});
   const { t } = useTranslation();
   const dispatch = useAppDispatch()
-  const { users } = useAppSelector(store => store.users);
-  console.log("🚀 ~ users:", users)
   const navigate = useNavigate()
 
   const handleSubmit = async (e: React.FormEvent) => {
