@@ -2,6 +2,7 @@ import { createSlice } from '@reduxjs/toolkit'
 import type { PayloadAction } from '@reduxjs/toolkit'
 // import type { RootState } from './store'
 import { Character } from '../types/characters.types'
+import { RootState } from './store'
 
 // Define a type for the slice state
 interface CharactersState {
@@ -33,6 +34,6 @@ export const characterSlice = createSlice({
 export const { setCharactersData, setTheme } = characterSlice.actions
 
 // Other code such as selectors can use the imported `RootState` type
-// export const selectCount = (state: RootState) => state.character.value
+export const characters = (state: RootState) => state.characters
 
 export default characterSlice.reducer

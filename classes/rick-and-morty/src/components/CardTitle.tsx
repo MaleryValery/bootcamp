@@ -1,5 +1,3 @@
-import React from 'react'
-
 type Props = {
     name: string
     species: string
@@ -9,10 +7,11 @@ type Props = {
 
 export default function CardTitle({name, species, status}: Props) {
   return (
-    <div>
-      <h3>{name}</h3>
+    <div className='flex flex-col flex-[1_1_0] text-white justify-start'>
+      <h2 className='text-[27px] leading-[1.1] font-bold'>{name}</h2>
       <div>
-        <span className={status === "Alive" ? "icon-green" : "icon-red" }>icon</span><span>{status} - {species}</span>
+        <span className={`w-[9px] h-[9px] inline-flex rounded-full mr-2 ${status === "Alive" ? "bg-green-500" : "bg-red-500"}`}></span>
+        <span className='font-[16px] leading-normal'>{status} - {species}</span>
       </div>
     </div>
   )
