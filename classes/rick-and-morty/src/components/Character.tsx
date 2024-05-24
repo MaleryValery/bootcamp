@@ -9,7 +9,7 @@ type CharacterProps = {
 
 export default function Character({ character }: CharacterProps) {
   return (
-    <li className="flex flex-col sm:flex-row overflow-hidden rounded-[0.5rem] bg-[#3C3E44] m-[13.5px] w-full sm:h-[220px] sm:w-[600px] shadow-lg">
+    <li className="flex flex-col sm:flex-row overflow-hidden rounded-[0.5rem] dark:bg-[#3C3E44] bg-gray-100 m-[13.5px] w-full sm:h-[220px] sm:w-[600px] shadow-lg">
       <div className="flex-[2_1_0] ">
         <img className="object-center object-cover m-0 h-[300px] sm:h-full w-full" src={character.image} />
       </div>

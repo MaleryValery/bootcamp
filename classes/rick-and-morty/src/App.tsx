@@ -19,6 +19,7 @@ const fetchData = async () => {
 function App() {
   const {isDark} = useAppSelector(state => state.characters);
   const dispatch = useAppDispatch();
+
   useEffect(() => {
     fetchData().then((data) => dispatch(setCharactersData(data!)));
   // eslint-disable-next-line react-hooks/exhaustive-deps
@@ -35,17 +36,19 @@ function App() {
   return (
     <>
       <div className="bg-[url('./assets/bg.svg')] bg-repeat bg-contain">
-        <div className="bg-stone-100 dark:bg-[#272B33] dark:bg-opacity-90 bg-opacity-95 w-full h-full">
+        <div className="bg-gray-100 dark:bg-[#272B33] dark:bg-opacity-90 bg-opacity-95 w-full h-full">
           <header className="px-7 py-4">
-            <nav className="flex  justify-between">
+            <nav className="flex justify-between">
               <div className="bg-[url('./assets/logo.svg')] w-[50px] h-[50px] bg-no-repeat bg-contain"></div>
-              <button onClick={() => dispatch(setTheme())}>{isDark ? <FaRegLightbulb size={30}/> : <FaLightbulb color='#fbbf24' size={30} /> }</button>
+              <button onClick={() => dispatch(setTheme())}>
+                {isDark ? <FaRegLightbulb size={30} /> : <FaLightbulb color='#fbbf24' size={30} />}
+              </button>
             </nav>
           </header>
           <h1 className="text-center text-[3.2rem] sm:text-[3.75rem] font-black p-2 opacity-100 dark:text-stone-100">The Rick and Morty API</h1>
         </div>
       </div>
-      <div className="bg-[#272B33] px-7">
+      <div className="dark:bg-[#272B33] bg-gray-2 px-7 flex justify-center">
           <Characters />
       </div>
     </>
